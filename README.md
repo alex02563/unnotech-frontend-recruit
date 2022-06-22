@@ -13,14 +13,14 @@ by [Vercel](https://vercel.com/)
 - Pinia 做狀態管理
 - Axios 抽象
 - I18n 多語系
-
+- Js-cookie
 
 ##### Features
 - 基本CRUD 新增 / 修改 / 刪除 / 搜尋 BookLists data
 - Book List Page 檢視頁
     * 供搜尋書名
     * 供新增書本導址-/books/add
-    * 多語系可選中英
+    * 多語系可選中英-js-cookie存放
 - Book Detail Page 內容頁
     * 返回導址-/books
     * 供搜尋書名、作者、備註
