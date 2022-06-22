@@ -1,0 +1,67 @@
+{
+  "name": "unnotech-frontend-recruit",
+  "version": "1.0.0",
+  "private": true,
+  "author": {
+    "name": "chunyuan",
+    "email": "ae8602563@gmail.com"
+  },
+  "scripts": {
+    "serve": "vue-cli-service serve",
+    "build": "vue-cli-service build",
+    "lint": "vue-cli-service lint"
+  },
+  "main": "index.js",
+  "dependencies": {
+    "autoprefixer": "^10.4.7",
+    "axios": "^0.27.2",
+    "core-js": "^3.8.3",
+    "node-sass": "^7.0.1",
+    "pinia": "^2.0.14",
+    "postcss": "^8.4.14",
+    "sass-loader": "^13.0.0",
+    "tailwindcss": "^3.1.3",
+    "vue": "^3.2.13",
+    "vue-router": "^4.0.16"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.12.16",
+    "@babel/eslint-parser": "^7.12.16",
+    "@vue/cli-plugin-babel": "~5.0.0",
+    "@vue/cli-plugin-eslint": "~5.0.0",
+    "@vue/cli-service": "~5.0.0",
+    "eslint": "^7.32.0",
+    "eslint-plugin-vue": "^8.0.3"
+  },
+  "eslintConfig": {
+    "root": true,
+    "env": {
+      "node": true
+    },
+    "extends": [
+      "plugin:vue/vue3-essential",
+      "eslint:recommended"
+    ],
+    "parserOptions": {
+      "parser": "@babel/eslint-parser"
+    },
+    "rules": {}
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not dead",
+    "not ie 11"
+  ],
+  "_id": "unnotech-frontend-recruit@1.0.0",
+  "bugs": {
+    "url": "https://github.com/alex02563/unnotech-frontend-recruit/issues"
+  },
+  "homepage": "https://github.com/alex02563/unnotech-frontend-recruit#readme",
+  "license": "MIT",
+  "readme": "ERROR: No README data found!",
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/alex02563/unnotech-frontend-recruit.git"
+  }
+}
