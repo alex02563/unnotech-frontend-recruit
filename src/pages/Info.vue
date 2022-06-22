@@ -2,7 +2,7 @@
   <div class="book-detail-page">
     <app-form>
       <template v-slot:menu-left>
-        <router-link v-show="type !== 'add' && type !== 'edit'" to="/books">
+        <router-link v-show="type !== 'edit'" to="/books">
           <img
             class="w-8 h-8 p-1"
             :src="require('@/assets/img/angle-left.png')"

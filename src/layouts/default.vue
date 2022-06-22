@@ -11,7 +11,6 @@ export default {
   name: "DefaultIndex",
   components: {
     Loading,
-  },
-  setup() {},
+  }
 };
 </script>

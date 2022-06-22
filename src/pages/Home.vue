@@ -44,10 +44,10 @@
                   />
                 </div>
                 <div class="divide-y divide-gray-400">
-                  <div class="font-bold text-md text-center">
-                    {{ book.title || t("unname") }}
+                  <div class="font-bold text-sm text-center">
+                    -{{ book.title || t("unname") }}-
                   </div>
-                  <div class="text-md text-center pt-1">
+                  <div class="text-xs text-center pt-2">
                     {{ book.author || t("unnote") }}
                   </div>
                 </div>

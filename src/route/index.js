@@ -1,5 +1,4 @@
 import { createWebHistory, createRouter } from 'vue-router'
-
 //  Layouts
 import defaultLayout from '@/layouts/default.vue'
 
@@ -17,8 +16,7 @@ const routes = [
     children: [
       {
         path: '/books',
-        component: Home,
-        meta: { title: 'Home' }
+        component: Home
       },
       {
         path: '/books/:id',
