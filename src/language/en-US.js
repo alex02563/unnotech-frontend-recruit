@@ -16,6 +16,8 @@ export default {
   edit: 'Edit',
   loading: 'Loading...',
   loading_memo: "This may take a few seconds, please don't close this page.",
+  plz_typing_book_or_autrhor: 'Please enter the title or author',
+  no_data: 'No Data',
   'zh-TW': 'Chinese',
   'en-US': 'English'
 }

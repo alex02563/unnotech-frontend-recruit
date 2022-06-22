@@ -13,6 +13,28 @@
         </router-link>
       </template>
       <template v-slot:area>
+        <div class="flex justify-center">
+          <input
+            name="author"
+            v-model.trim="search"
+            class="
+              mt-6
+              p-3
+              bg-white
+              border
+              shadow-sm
+              border-slate-300
+              placeholder-slate-400
+              focus:outline-none focus:border-sky-500 focus:ring-sky-500
+              block
+              w-72
+              rounded-md
+              sm:text-sm
+              focus:ring-1
+            "
+            :placeholder="t('plz_typing_book_or_autrhor')"
+          />
+        </div>
         <div
           class="
             grid
@@ -24,7 +46,7 @@
             min-h-12
           "
         >
-          <div v-for="(book, idx) in data.bookLists" :key="`book-list-${idx}`">
+          <div v-for="(book, idx) in formatList" :key="`book-list-${idx}`">
             <router-link :to="`/books/${book.id}`">
               <div
                 class="
@@ -79,6 +101,15 @@
             </button> -->
           </div>
         </div>
+        <div v-show="!formatList.length" class="w-full text-center">
+          <div class="flex justify-center">
+            <img
+              class="w-12 h-12 my-3"
+              :src="require('@/assets/img/interrogation.png')"
+            />
+          </div>
+          {{ t("no_data") }}
+        </div>
       </template>
     </app-form>
   </div>
@@ -88,7 +119,7 @@
 import AppForm from "@/components/AppForm";
 import i18nBtn from "@/components/I18nBtn";
 
-import { reactive, onMounted } from "vue";
+import { ref, onMounted, computed } from "vue";
 import { getListsBook, deleteBook } from "@/api/books";
 import { useIndexStore } from "@/stores/index";
 import { useI18n } from "vue-i18n";
@@ -100,23 +131,35 @@ export default {
     i18nBtn,
   },
   setup() {
-    const data = reactive({
-      bookLists: [],
-      search: "",
-    });
+    const bookLists = ref([]);
+    const search = ref("");
     const indexStore = useIndexStore();
     const { t } = useI18n();
     onMounted(async () => {
       indexStore.loadingStart();
       await getListsBook().then((res) => {
         const resp = res.data;
-        data.bookLists = resp;
+        bookLists.value = resp;
         indexStore.loadingEnd();
       });
     });
 
+    let formatList = computed(() => {
+      return bookLists.value.filter((list) => {
+        if (
+          !search.value ||
+          list.title.toLowerCase().indexOf(search.value) !== -1 ||
+          list.author.toLowerCase().indexOf(search.value) !== -1
+        ) {
+          return true;
+        }
+      });
+    });
+
     return {
-      data,
+      bookLists,
+      search,
+      formatList,
       deleteBook,
       t,
     };
