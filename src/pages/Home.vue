@@ -1,7 +1,12 @@
 <template>
   <div class="book-list-age">
     <app-form>
-      <template v-slot:title> 書本列表 </template>
+      <template v-slot:menu-left>
+        <i18n-btn />
+      </template>
+      <template v-slot:title>
+        {{ t("book_list") }}
+      </template>
       <template v-slot:menu-right>
         <router-link to="/books/add">
           <img class="w-8 h-8 p-1" :src="require('@/assets/img/plus.png')" />
@@ -40,16 +45,36 @@
                 </div>
                 <div class="divide-y divide-gray-400">
                   <div class="font-bold text-md text-center">
-                    {{ book.title || "未命名" }}
+                    {{ book.title || t("unname") }}
                   </div>
                   <div class="text-md text-center pt-1">
-                    {{ book.author || "未註名" }}
+                    {{ book.author || t("unnote") }}
                   </div>
                 </div>
               </div>
             </router-link>
-            <!-- <button @click="deleteBook(book.id)"
-              class="inline-block mt-2 px-4 py-1.5 bg-red-500 text-white font-medium text-xs leading-tight uppercase rounded-full shadow-md focus:shadow-lg focus:outline-none focus:ring-0 active:shadow-lg transition duration-150 ease-in-out">
+            <!-- <button
+              @click="deleteBook(book.id)"
+              class="
+                inline-block
+                mt-2
+                px-4
+                py-1.5
+                bg-red-500
+                text-white
+                font-medium
+                text-xs
+                leading-tight
+                uppercase
+                rounded-full
+                shadow-md
+                focus:shadow-lg focus:outline-none focus:ring-0
+                active:shadow-lg
+                transition
+                duration-150
+                ease-in-out
+              "
+            >
               Delete
             </button> -->
           </div>
@@ -61,15 +86,18 @@
 
 <script>
 import AppForm from "@/components/AppForm";
+import i18nBtn from "@/components/I18nBtn";
 
 import { reactive, onMounted } from "vue";
 import { getListsBook, deleteBook } from "@/api/books";
 import { useIndexStore } from "@/stores/index";
+import { useI18n } from "vue-i18n";
 
 export default {
   name: "HomeIndex",
   components: {
     AppForm,
+    i18nBtn,
   },
   setup() {
     const data = reactive({
@@ -77,9 +105,9 @@ export default {
       search: "",
     });
     const indexStore = useIndexStore();
-    indexStore.loadingStart();
-
+    const { t } = useI18n();
     onMounted(async () => {
+      indexStore.loadingStart();
       await getListsBook().then((res) => {
         const resp = res.data;
         data.bookLists = resp;
@@ -90,6 +118,7 @@ export default {
     return {
       data,
       deleteBook,
+      t,
     };
   },
 };

@@ -11,9 +11,9 @@
       </template>
       <template v-slot:title>
         <div v-show="type !== 'add'">
-          {{ info.title || "未命名" }}
+          {{ info.title || t('unname') }}
         </div>
-        <div v-show="type === 'add'">新增書本</div>
+        <div v-show="type === 'add'">{{ t('add_book') }}</div>
       </template>
       <template v-slot:menu-right>
         <img
@@ -56,7 +56,7 @@
                     text-slate-700
                   "
                 >
-                  名稱
+                  {{ t('name') }}
                 </span>
                 <input
                   name="title"
@@ -82,7 +82,7 @@
                     'bg-gray-200 bg-clip-padding border border-solid border-gray-300':
                       type !== 'add' && type !== 'edit',
                   }"
-                  placeholder="請輸入書名"
+                  :placeholder="t('typing_name')"
                 />
               </label>
               <label class="block p-2">
@@ -95,7 +95,7 @@
                     text-slate-700
                   "
                 >
-                  作者
+                  {{ t('author') }}
                 </span>
                 <input
                   name="author"
@@ -121,7 +121,7 @@
                     'bg-gray-200 bg-clip-padding border border-solid border-gray-300':
                       type !== 'add' && type !== 'edit',
                   }"
-                  placeholder="請輸入作者"
+                  :placeholder="t('typing_author')"
                 />
               </label>
               <label class="block p-2">
@@ -134,7 +134,7 @@
                     text-slate-700
                   "
                 >
-                  備註
+                  {{ t('description') }}
                 </span>
                 <textarea
                   name="description"
@@ -165,7 +165,7 @@
                       type !== 'add' && type !== 'edit',
                   }"
                   rows="10"
-                  placeholder="請輸入備註"
+                  :placeholder="t('typing_description')"
                 ></textarea>
               </label>
               <div
@@ -198,7 +198,7 @@
                     ease-in-out
                   "
                 >
-                  取消
+                  {{ t('cancel') }}
                 </button>
                 <button
                   v-show="type === 'add'"
@@ -227,7 +227,7 @@
                     ease-in-out
                   "
                 >
-                  新增
+                  {{ t('create') }}
                 </button>
                 <button
                   v-show="type === 'edit'"
@@ -256,7 +256,7 @@
                     ease-in-out
                   "
                 >
-                  修改
+                  {{ t('edit') }}
                 </button>
               </div>
             </div>
@@ -274,6 +274,7 @@ import { useRoute, useRouter } from "vue-router";
 import { ref, onMounted } from "vue";
 import { getListsBookInfo, addNewBook, editBook } from "@/api/books";
 import { useIndexStore } from "@/stores/index";
+import { useI18n } from "vue-i18n";
 
 export default {
   name: "InfoId",
@@ -283,6 +284,9 @@ export default {
   setup() {
     const router = useRouter();
     const route = useRoute();
+    const indexStore = useIndexStore();
+    const { t } = useI18n();
+
     let info = ref({
       title: "",
       author: "",
@@ -292,7 +296,6 @@ export default {
 
     const id = ref(route.params.id);
     let type = ref(route.params.id);
-    const indexStore = useIndexStore();
 
     const deepClone = (data) => {
       var type = typeof data;
@@ -340,7 +343,7 @@ export default {
           router.push("/books");
         });
       } else {
-        alert("請填寫 * 必填欄位");
+        alert(t('plz_required'));
       }
     };
 
@@ -379,6 +382,7 @@ export default {
       toEdit,
       editBookInfo,
       cancel,
+      t
     };
   },
 };

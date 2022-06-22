@@ -29,9 +29,6 @@
 
 <script>
 export default {
-  name: "AppForm",
+  name: "AppForm"
 };
 </script>
-
-<style lang="scss" scoped>
-</style>
