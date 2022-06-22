@@ -55,6 +55,7 @@
                   bg-neutral-100
                   h-72
                   p-6
+                  transition-all
                   hover:shadow-lg hover:scale-90
                   cursor-pointer
                 "

@@ -40,7 +40,7 @@
           >
             <div class="flex justify-center items-center">
               <img
-                class="w-24 h-24"
+                class="w-24 h-24 my-6"
                 :src="require('@/assets/img/book-stack.png')"
               />
             </div>
