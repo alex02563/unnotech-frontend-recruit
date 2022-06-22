@@ -79,7 +79,7 @@
                     focus:ring-1
                   "
                   :class="{
-                    'bg-gray-200 bg-clip-padding border border-solid border-gray-300':
+                    'bg-gray-300 bg-clip-padding border border-solid border-gray-300':
                       type !== 'add' && type !== 'edit',
                   }"
                   :placeholder="t('typing_name')"
@@ -118,7 +118,7 @@
                     focus:ring-1
                   "
                   :class="{
-                    'bg-gray-200 bg-clip-padding border border-solid border-gray-300':
+                    'bg-gray-300 bg-clip-padding border border-solid border-gray-300':
                       type !== 'add' && type !== 'edit',
                   }"
                   :placeholder="t('typing_author')"
@@ -161,7 +161,7 @@
                     focus:outline-none
                   "
                   :class="{
-                    'bg-gray-200 bg-clip-padding border border-solid border-gray-300':
+                    'bg-gray-300 bg-clip-padding border border-solid border-gray-300':
                       type !== 'add' && type !== 'edit',
                   }"
                   rows="10"
