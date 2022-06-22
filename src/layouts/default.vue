@@ -1,18 +1,17 @@
 <template>
   <div class="mx-auto bg-neutral-200 min-h-screen">
-    <loading/>
+    <loading />
     <router-view />
   </div>
 </template>
 
 <script>
-import Loading from '@/components/Loading.vue'
+import Loading from "@/components/Loading.vue";
 export default {
-  name: 'DefaultIndex',
+  name: "DefaultIndex",
   components: {
-    Loading
+    Loading,
   },
-  setup() {
-  },
-}
+  setup() {},
+};
 </script>

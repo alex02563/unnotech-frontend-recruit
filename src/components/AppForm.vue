@@ -1,6 +1,14 @@
 <template>
   <div class="app-form">
-    <div class="font-bold font-bold text-2xl text-center text-white text-zinc-900 bg-neutral-100 p-3">
+    <div
+      class="
+        font-bold
+        text-2xl text-center
+        text-zinc-900
+        bg-neutral-100
+        p-3
+      "
+    >
       <div class="grid grid-flow-col relative">
         <div class="col-span-1 absolute left-0">
           <slot name="menu-left"></slot>
@@ -21,10 +29,9 @@
 
 <script>
 export default {
-  name: 'AppForm'
-}
+  name: "AppForm",
+};
 </script>
 
 <style lang="scss" scoped>
-
 </style>
