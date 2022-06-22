@@ -18,6 +18,8 @@ export default {
   loading_memo: '這可能需要幾秒鐘，請不要關閉此頁面。',
   plz_typing_book_or_autrhor: '請輸入書名或作者',
   no_data: '沒有資料',
+  title_404: 'Book-Lists 404 沒有找到',
+  back_home: '返回首頁',
   'zh-TW': '中文',
   'en-US': '英文'
 }

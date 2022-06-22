@@ -11,9 +11,9 @@
       </template>
       <template v-slot:title>
         <div v-show="type !== 'add'">
-          {{ info.title || t('unname') }}
+          {{ info.title || t("unname") }}
         </div>
-        <div v-show="type === 'add'">{{ t('add_book') }}</div>
+        <div v-show="type === 'add'">{{ t("add_book") }}</div>
       </template>
       <template v-slot:menu-right>
         <img
@@ -56,7 +56,7 @@
                     text-slate-700
                   "
                 >
-                  {{ t('name') }}
+                  {{ t("name") }}
                 </span>
                 <input
                   name="title"
@@ -95,7 +95,7 @@
                     text-slate-700
                   "
                 >
-                  {{ t('author') }}
+                  {{ t("author") }}
                 </span>
                 <input
                   name="author"
@@ -134,7 +134,7 @@
                     text-slate-700
                   "
                 >
-                  {{ t('description') }}
+                  {{ t("description") }}
                 </span>
                 <textarea
                   name="description"
@@ -198,7 +198,7 @@
                     ease-in-out
                   "
                 >
-                  {{ t('cancel') }}
+                  {{ t("cancel") }}
                 </button>
                 <button
                   v-show="type === 'add'"
@@ -227,7 +227,7 @@
                     ease-in-out
                   "
                 >
-                  {{ t('create') }}
+                  {{ t("create") }}
                 </button>
                 <button
                   v-show="type === 'edit'"
@@ -256,7 +256,7 @@
                     ease-in-out
                   "
                 >
-                  {{ t('edit') }}
+                  {{ t("edit") }}
                 </button>
               </div>
             </div>
@@ -323,6 +323,9 @@ export default {
       if (type.value !== "add" && type.value !== "edit") {
         indexStore.loadingStart();
         await getListsBookInfo(route.params.bookId).then((res) => {
+          if (res.status !== 200) {
+            router.push("/404");
+          }
           const { data } = res;
           info.value = data;
           infoEdit.value = deepClone(info.value);
@@ -343,7 +346,7 @@ export default {
           router.push("/books");
         });
       } else {
-        alert(t('plz_required'));
+        alert(t("plz_required"));
       }
     };
 
@@ -382,7 +385,7 @@ export default {
       toEdit,
       editBookInfo,
       cancel,
-      t
+      t,
     };
   },
 };
