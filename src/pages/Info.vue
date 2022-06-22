@@ -294,8 +294,8 @@ export default {
     });
     let infoEdit = ref({});
 
-    const id = ref(route.params.id);
-    let type = ref(route.params.id);
+    const bookId = ref(route.params.bookId);
+    let type = ref(route.params.bookId);
 
     const deepClone = (data) => {
       var type = typeof data;
@@ -322,7 +322,7 @@ export default {
     const getBookInfo = async () => {
       if (type.value !== "add" && type.value !== "edit") {
         indexStore.loadingStart();
-        await getListsBookInfo(route.params.id).then((res) => {
+        await getListsBookInfo(route.params.bookId).then((res) => {
           const { data } = res;
           info.value = data;
           infoEdit.value = deepClone(info.value);
@@ -363,7 +363,7 @@ export default {
 
     const cancel = () => {
       if (type.value === "edit") {
-        type.value = id;
+        type.value = bookId;
         infoEdit.value = deepClone(info.value);
       } else {
         router.push("/books");

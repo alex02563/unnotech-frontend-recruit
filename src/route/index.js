@@ -19,7 +19,7 @@ const routes = [
         component: Home
       },
       {
-        path: '/books/:id',
+        path: '/books/:bookId',
         component: Info
       }
     ]
