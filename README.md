@@ -16,8 +16,17 @@ by [Vercel](https://vercel.com/)
 
 
 ##### Features
-- 基本CRUD 新增/修改/刪除/搜尋 BookLists data
-
+- 基本CRUD 新增 / 修改 / 刪除 / 搜尋 BookLists data
+- Book List Page 檢視頁
+    * 供搜尋書名
+    * 供新增書本導址-/books/add
+    * 多語系可選中英
+- Book Detail Page 內容頁
+    * 返回導址-/books
+    * 供搜尋書名、作者、備註
+    * 編輯書本功能、新增功能耦合在同一頁上，並依照type(add、edit)去判斷頁面功能
+- Loading Page
+- 404 Router 攔截
 ## Installation
 
 Dillinger requires [Node.js](https://nodejs.org/) v10+ to run.
