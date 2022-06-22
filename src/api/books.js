@@ -1,6 +1,6 @@
 import http from '@/plugins/axios/http'
 
-const resquest = '/api'
+const resquest = 'https://fe-interview-api.unnotech.com'
 
 export function getListsBook () {
   return http.get(`${resquest}/books/`)

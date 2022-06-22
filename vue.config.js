@@ -6,16 +6,16 @@ module.exports = defineConfig({
     //   warnings: true,
     //   errors: true
     // },
-    proxy: {
-      '/api': {
-        target: 'https://fe-interview-api.unnotech.com',
-        changeOrigin: true,
-        ws: false,
-        secure: true,
-        pathRewrite: {
-          '^/api': '/'
-        }
-      }
-    }
+    // proxy: {
+    //   '/api': {
+    //     target: 'https://fe-interview-api.unnotech.com',
+    //     changeOrigin: true,
+    //     ws: false,
+    //     secure: true,
+    //     pathRewrite: {
+    //       '^/api': '/'
+    //     }
+    //   }
+    // }
   }
 })
