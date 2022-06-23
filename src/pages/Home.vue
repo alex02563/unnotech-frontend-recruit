@@ -1,5 +1,5 @@
 <template>
-  <div class="book-list-age">
+  <div class="book-list-page min-h-screen">
     <app-form>
       <template v-slot:menu-left>
         <i18n-btn />
@@ -13,10 +13,10 @@
         </router-link>
       </template>
       <template v-slot:area>
-        <div class="flex justify-center">
+        <div class="flex justify-center mt-20">
           <img
-            class="w-24 h-24 mt-10"
-            :src="require('@/assets/img/robot.png')"
+            class="w-24 h-24"
+            :src="require('@/assets/img/book.png')"
           />
         </div>
         <div class="flex justify-center">
@@ -50,22 +50,31 @@
             gap-4
             p-6
             min-h-12
+            mt-12
           "
         >
           <div v-for="(book, idx) in formatList" :key="`book-list-${idx}`">
             <router-link :to="`/books/${book.id}`">
               <div
                 class="
+                  relative
                   book-card
-                  rounded-md
+                  rounded-lg
                   bg-neutral-100
                   h-72
                   p-6
                   transition-all
-                  hover:shadow-lg hover:scale-90
                   cursor-pointer
+                  shadow-lg
+                  scale-90
+                  border-l-0 border-l-sky-400 border-b-gray-300
+                  hover:border-b-8 hover:border-l-8 hover:hover:scale-100
                 "
               >
+                <img
+                  class="w-8 h-8 absolute top-0 right-4"
+                  :src="require('@/assets/img/bookmark.png')"
+                />
                 <div class="flex justify-center">
                   <img
                     class="w-24 h-24 my-3"
@@ -147,8 +156,12 @@ export default {
       return bookLists.value.filter((list) => {
         if (
           !search.value ||
-          (list.title && list.title.toLowerCase().indexOf(search.value.toLowerCase()) !== -1) ||
-          (list.author && list.author.toLowerCase().indexOf(search.value.toLowerCase()) !==-1)
+          (list.title &&
+            list.title.toLowerCase().indexOf(search.value.toLowerCase()) !==
+              -1) ||
+          (list.author &&
+            list.author.toLowerCase().indexOf(search.value.toLowerCase()) !==
+              -1)
         ) {
           return true;
         }

@@ -1,5 +1,5 @@
 <template>
-  <div class="book-detail-page">
+  <div class="book-detail-page min-h-screen">
     <app-form>
       <template v-slot:menu-left>
         <router-link v-show="type !== 'edit'" to="/books">

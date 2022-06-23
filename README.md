@@ -30,7 +30,7 @@ by [Vercel](https://vercel.com/)
     * 編輯書本功能、新增功能耦合在同一頁上，並依照type(add、edit)去判斷頁面功能
 - Loading Page
 - 404 Router 攔截
-
+- Meta tag og
 ## Installation
 Dillinger requires [Node.js](https://nodejs.org/) v10+ to run.
 
