@@ -14,6 +14,12 @@
       </template>
       <template v-slot:area>
         <div class="flex justify-center">
+          <img
+            class="w-24 h-24 mt-10"
+            :src="require('@/assets/img/robot.png')"
+          />
+        </div>
+        <div class="flex justify-center">
           <input
             name="author"
             v-model.trim="search"
@@ -121,9 +127,9 @@ import AppForm from "@/components/AppForm";
 import i18nBtn from "@/components/I18nBtn";
 
 import { ref, onMounted, computed } from "vue";
+import { useI18n } from "vue-i18n";
 import { getListsBook, deleteBook } from "@/api/books";
 import { useIndexStore } from "@/stores/index";
-import { useI18n } from "vue-i18n";
 
 export default {
   name: "HomeIndex",
@@ -132,28 +138,29 @@ export default {
     i18nBtn,
   },
   setup() {
+    const { t } = useI18n();
+    const indexStore = useIndexStore();
     const bookLists = ref([]);
     const search = ref("");
-    const indexStore = useIndexStore();
-    const { t } = useI18n();
-    onMounted(async () => {
-      indexStore.loadingStart();
-      await getListsBook().then((res) => {
-        const resp = res.data;
-        bookLists.value = resp;
-        indexStore.loadingEnd();
-      });
-    });
 
     let formatList = computed(() => {
       return bookLists.value.filter((list) => {
         if (
           !search.value ||
-          list.title.toLowerCase().indexOf(search.value) !== -1 ||
-          list.author.toLowerCase().indexOf(search.value) !== -1
+          (list.title && list.title.toLowerCase().indexOf(search.value.toLowerCase()) !== -1) ||
+          (list.author && list.author.toLowerCase().indexOf(search.value.toLowerCase()) !==-1)
         ) {
           return true;
         }
+      });
+    });
+
+    onMounted(() => {
+      indexStore.loadingStart();
+      getListsBook().then((res) => {
+        const resp = res.data;
+        bookLists.value = resp;
+        indexStore.loadingEnd();
       });
     });
 

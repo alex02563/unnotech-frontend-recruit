@@ -3,6 +3,9 @@
 #### [Live Demo](https://boook-lists.vercel.app/books)
 by [Vercel](https://vercel.com/)
 
+##### Image
+[Image Resource](https://www.flaticon.com/free-icons/robot) by Robot icons created by Freepik - Flaticon
+
 ##### Tech - ✨Magic ✨
 - Vue-cli
 - Vue3 建置模板
@@ -27,8 +30,8 @@ by [Vercel](https://vercel.com/)
     * 編輯書本功能、新增功能耦合在同一頁上，並依照type(add、edit)去判斷頁面功能
 - Loading Page
 - 404 Router 攔截
-## Installation
 
+## Installation
 Dillinger requires [Node.js](https://nodejs.org/) v10+ to run.
 
 Install the dependencies and devDependencies and start the server.

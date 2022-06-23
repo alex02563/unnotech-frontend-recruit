@@ -270,11 +270,11 @@
 <script>
 import AppForm from "@/components/AppForm";
 
-import { useRoute, useRouter } from "vue-router";
 import { ref, onMounted } from "vue";
+import { useI18n } from "vue-i18n";
+import { useRoute, useRouter } from "vue-router";
 import { getListsBookInfo, addNewBook, editBook } from "@/api/books";
 import { useIndexStore } from "@/stores/index";
-import { useI18n } from "vue-i18n";
 
 export default {
   name: "InfoId",
@@ -319,10 +319,10 @@ export default {
       return obj;
     };
 
-    const getBookInfo = async () => {
+    const getBookInfo = () => {
       if (type.value !== "add" && type.value !== "edit") {
         indexStore.loadingStart();
-        await getListsBookInfo(route.params.bookId).then((res) => {
+        getListsBookInfo(route.params.bookId).then((res) => {
           if (res.status !== 200) {
             router.push("/404");
           }
@@ -334,14 +334,14 @@ export default {
       }
     };
 
-    const addBook = async () => {
+    const addBook = () => {
       if (
         infoEdit.value.title &&
         infoEdit.value.author &&
         infoEdit.value.description
       ) {
         indexStore.loadingStart();
-        await addNewBook(infoEdit.value).then(() => {
+        addNewBook(infoEdit.value).then(() => {
           indexStore.loadingEnd();
           router.push("/books");
         });
@@ -354,14 +354,22 @@ export default {
       type.value = "edit";
     };
 
-    const editBookInfo = async () => {
-      indexStore.loadingStart();
-      await editBook(infoEdit.value).then((res) => {
-        const { data } = res;
-        info.value = data;
-        cancel();
-        indexStore.loadingEnd();
-      });
+    const editBookInfo = () => {
+      if (
+        infoEdit.value.title &&
+        infoEdit.value.author &&
+        infoEdit.value.description
+      ) {
+        indexStore.loadingStart();
+        editBook(infoEdit.value).then((res) => {
+          const { data } = res;
+          info.value = data;
+          cancel();
+          indexStore.loadingEnd();
+        });
+      } else {
+        alert(t("plz_required"));
+      }
     };
 
     const cancel = () => {
@@ -373,7 +381,7 @@ export default {
       }
     };
 
-    onMounted(async () => {
+    onMounted(() => {
       getBookInfo();
     });
 
