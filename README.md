@@ -3,10 +3,10 @@
 #### [Live Demo](https://boook-lists.vercel.app/books)
 by [Vercel](https://vercel.com/)
 
-##### Image
+## Image
 [Image Resource](https://www.flaticon.com/free-icons/robot) by Robot icons created by Freepik - Flaticon
 
-##### Tech - ✨Magic ✨
+## Tech - ✨Magic ✨
 - Vue-cli
 - Vue3 建置模板
 - Vue-router 基本路由配置
@@ -18,7 +18,7 @@ by [Vercel](https://vercel.com/)
 - I18n 多語系
 - Js-cookie
 
-##### Features
+## Features
 - 基本CRUD 新增 / 修改 / 刪除 / 搜尋 BookLists data
 - Book List Page 檢視頁
     * 供搜尋書名
